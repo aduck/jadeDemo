@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="validate.js"></script>
+</head>
+<body>
+	<input type="text" id="username" placeholder="用户名" /><br>
+	<input type="text" id="email" placeholder="邮箱" /><br>
+	<input type="password" id="password" placeholder="密码" /><br>
+	<button onclick='start()'>验证</button>
+	<script>
+	var arr=[
+		{id:"username",title:"用户名",rules:['required']},
+		{id:"email",title:"邮箱",rules:['required',/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/]},
+		{id:"password",title:"密码",rules:['required',/^[a-z0-9_-]{6,18}$/]}
+	]
+	function start(){
+		console.log(main(arr));
+	}
+	</script>
+</body>
+</html>

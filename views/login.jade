@@ -1,0 +1,60 @@
+extends ./inc/layout.jade
+block header
+	title 登陆
+	link(rel="stylesheet",href="css/style.css")
+block content
+	.userPage-banner
+		.container
+			.userPageForm.g-fr.loginForm
+				h2.userPageForm-title 
+					span.g-fr 我是新用户？<a href="">立即注册</a>
+					|请登录
+				form(autocomplete="off")
+				.userPageForm-ipt 
+					input#username(type="text",placeholder="用户名/手机号/邮箱",autocomplete="off")
+				.userPageForm-ipt
+					input#password(type="password",placeholder="密码",autocomplete="off")
+				.userPageForm-yzcode
+					input#checkcode(type="text",placeholder="验证码",autocomplete="off")
+					img(src="images/u4.jpg",alt="")
+					a(href="javascript:;") 换一张
+				.userPageForm-config
+					a.g-fr(href="") 忘记密码？
+					label(for="autoLogin")
+						input#autoLogin(type="checkbox",name="")
+						|自动登录
+				span#validate-tip
+				button.userPageForm-btn 登 陆
+				p.userPageForm-otherLogin-title
+					span.m-lineThrough 合作网站登录
+				.userPageForm-otherLogin
+					a(href=""): img(src="images/zfb.png")
+					a(href=""): img(src="images/qq.png")
+					a(href=""): img(src="images/weibo.png")
+block scripts
+	script(src="http://file.easeeyes.com/js/jquery.min.js")
+	script(src="js/placeholder.js")
+	script(src="js/validate.js")
+	script.
+		var validateTip=document.getElementById('validate-tip'),
+			checkArr=[
+				{"id":"username","title":"用户名/账号","rules":['required']},
+				{"id":"password","title":"密码","rules":['required']}
+			];
+		for(var i=0,len=checkArr.length;i<len;i++){
+			var item=document.getElementById(checkArr[i]['id']),
+				title=checkArr[i]['title'],
+				rules=checkArr[i]['rules'];
+			(function(title,rules){
+				item.onblur=function(){
+					var val=this.value,
+						res=check(val,title,rules);
+					if(res.error){
+						validateTip.innerHTML=res.title+res.msg;
+					}else{
+						validateTip.innerHTML='';
+					}
+				}
+			})(title,rules);
+		}
+		

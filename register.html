@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="userPageHeader">
+      <div class="container">
+        <div class="g-fr"><img src="images/u1.jpg"></div><a href="/" target="_blank"><img src="images/ulogo.jpg"></a>
+      </div>
+    </div>
+    <div class="userPage-banner">
+      <div class="container">
+        <div class="userPageForm g-fr registerForm">
+          <h2 class="userPageForm-title"> <span class="g-fr">已经注册<a href="">在此登陆></a></span>手机注册</h2>
+          <form autocomplete="off">
+            <div class="userPageForm-ipt">
+              <input type="text" placeholder="请输入手机号码" autocomplete="off">
+            </div>
+            <div class="userPageForm-ipt">
+              <input type="text" placeholder="密码为6-20位字母，数字和符号组合" autocomplete="off">
+            </div>
+            <div class="userPageForm-ipt">
+              <input type="text" placeholder="请再次输入上面的密码" autocomplete="off">
+            </div>
+            <div class="userPageForm-ipt userPageForm-ipt2"><span id="sendMessage" class="g-fr">获取短信校验码</span>
+              <input type="text" placeholder="短信验证码" autocomplete="off">
+            </div>
+            <div class="changeRegisterType"><a href="">通过邮箱注册></a></div>
+            <button class="userPageForm-btn">注 册</button>
+            <label for="agreed">
+              <input id="agreed" type="checkbox">我已阅读并同意 <a href="" target="_blank">《易视网用户协议》</a>
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="userPageFooter">
+      <div class="container">
+        <p><a href="">首页</a> | <a href="">关于我们</a> | <a href="">联系我们</a> | <a href="">商务合作</a> | <a href="">隐私保护</a> | <a href="">使用协议</a> | <a href="">网站地图</a> | <a href="">友情链接</a></p>
+        <p><span style="font-family:arial;">&copy;</span>易视网2008-2013上海明庭贸易有限公司 版权所有 网站备案号：<a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备08112987号-2</a> <a href="api/certify/yaoping_info.jpg" target="_blank">互联网药品信息服务资格证书</a></p>
+        <div class="userPageFooter-icons"><a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120419095838439" target="_blank"><img src="data/afficheimg/1304931895472539522.gif" alt=""/></a> <a href="http://www.easeeyes.com/article-73.html" target="_blank" rel="nofollow"><img src="data/afficheimg/1304931928594552034.gif" height="40px" alt=""/></a> <a href="http://www.easeeyes.com/article-75.html" target="_blank" rel="nofollow"><img src="data/afficheimg/1304931960571463910.gif" alt=""/></a> <a href='https://search.szfw.org/cert/l/CX20140807008688008780' target='_blank'><img src='http://img.easeeyes.com/common/ceca.png'></a> <a href="javascript:;" rel="nofollow"><img src="data/afficheimg/1304932017854670211.gif" alt=""/></a> <a href="http://www.51honest.org/wscredit/detail.credit?action=preLevel&credcode=NO.20000039800&axbFlag=axb" target="_blank" rel="nofollow"><img src="data/afficheimg/1340075718157125151.gif" height="40px" alt=""/></a> <a href="http://www.zx110.org/" target="_blank" rel="nofollow"><img src="http://img.easeeyes.com/common/pfooter/zhenxin.gif" width="100" height="40" alt=""/></a></div>
+      </div>
+    </div>
+    <script src="http://file.easeeyes.com/js/jquery.min.js"></script>
+    <script src="js/placeholder.js"></script>
+    <script>
+      // 倒计时
+      function countDown(box,init,end,step,interval,callback){
+      	var timer=setTimeout(function(){
+      		countDown(box,init,end,step,interval,callback);
+      	},interval);
+      	if(init<=end){
+      		clearTimeout(timer);
+      		callback();
+      	}else{
+      		init-=step;
+      		box.innerHTML=init;
+      	}
+      }
+      var sendBtn=document.getElementById('sendMessage'),
+      	clicked=false;
+      sendBtn.onclick=function(){
+      	if(clicked) return;
+      	clicked=true;
+      	var that=this;
+      	that.innerHTML="<i id='countDown'></i>秒后重新发送";
+      	var box=document.getElementById('countDown');
+      	countDown(box,120,1,1,1000,function(){
+      		clicked=false;
+      		that.innerHTML="获取短信校验码";
+      	})
+      }
+    </script>
+  </body>
+</html>

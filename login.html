@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>登陆</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="userPageHeader">
+      <div class="container">
+        <div class="g-fr"><img src="images/u1.jpg"></div><a href="/" target="_blank"><img src="images/ulogo.jpg"></a>
+      </div>
+    </div>
+    <div class="userPage-banner">
+      <div class="container">
+        <div class="userPageForm g-fr loginForm">
+          <h2 class="userPageForm-title"> <span class="g-fr">我是新用户？<a href="">立即注册</a></span>请登录</h2>
+          <form autocomplete="off"></form>
+          <div class="userPageForm-ipt"> 
+            <input id="username" type="text" placeholder="用户名/手机号/邮箱" autocomplete="off">
+          </div>
+          <div class="userPageForm-ipt">
+            <input id="password" type="password" placeholder="密码" autocomplete="off">
+          </div>
+          <div class="userPageForm-yzcode">
+            <input id="checkcode" type="text" placeholder="验证码" autocomplete="off"><img src="images/u4.jpg" alt=""><a href="javascript:;">换一张</a>
+          </div>
+          <div class="userPageForm-config"><a href="" class="g-fr">忘记密码？</a>
+            <label for="autoLogin">
+              <input id="autoLogin" type="checkbox" name="">自动登录
+            </label>
+          </div><span id="validate-tip"></span>
+          <button class="userPageForm-btn">登 陆</button>
+          <p class="userPageForm-otherLogin-title"><span class="m-lineThrough">合作网站登录</span></p>
+          <div class="userPageForm-otherLogin"><a href=""><img src="images/zfb.png"></a><a href=""><img src="images/qq.png"></a><a href=""><img src="images/weibo.png"></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="userPageFooter">
+      <div class="container">
+        <p><a href="">首页</a> | <a href="">关于我们</a> | <a href="">联系我们</a> | <a href="">商务合作</a> | <a href="">隐私保护</a> | <a href="">使用协议</a> | <a href="">网站地图</a> | <a href="">友情链接</a></p>
+        <p><span style="font-family:arial;">&copy;</span>易视网2008-2013上海明庭贸易有限公司 版权所有 网站备案号：<a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备08112987号-2</a> <a href="api/certify/yaoping_info.jpg" target="_blank">互联网药品信息服务资格证书</a></p>
+        <div class="userPageFooter-icons"><a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120419095838439" target="_blank"><img src="data/afficheimg/1304931895472539522.gif" alt=""/></a> <a href="http://www.easeeyes.com/article-73.html" target="_blank" rel="nofollow"><img src="data/afficheimg/1304931928594552034.gif" height="40px" alt=""/></a> <a href="http://www.easeeyes.com/article-75.html" target="_blank" rel="nofollow"><img src="data/afficheimg/1304931960571463910.gif" alt=""/></a> <a href='https://search.szfw.org/cert/l/CX20140807008688008780' target='_blank'><img src='http://img.easeeyes.com/common/ceca.png'></a> <a href="javascript:;" rel="nofollow"><img src="data/afficheimg/1304932017854670211.gif" alt=""/></a> <a href="http://www.51honest.org/wscredit/detail.credit?action=preLevel&credcode=NO.20000039800&axbFlag=axb" target="_blank" rel="nofollow"><img src="data/afficheimg/1340075718157125151.gif" height="40px" alt=""/></a> <a href="http://www.zx110.org/" target="_blank" rel="nofollow"><img src="http://img.easeeyes.com/common/pfooter/zhenxin.gif" width="100" height="40" alt=""/></a></div>
+      </div>
+    </div>
+    <script src="http://file.easeeyes.com/js/jquery.min.js"></script>
+    <script src="js/placeholder.js"></script>
+    <script src="js/validate.js"></script>
+    <script>
+      var validateTip=document.getElementById('validate-tip'),
+      	checkArr=[
+      		{"id":"username","title":"用户名/账号","rules":['required']},
+      		{"id":"password","title":"密码","rules":['required']}
+      	];
+      for(var i=0,len=checkArr.length;i<len;i++){
+      	var item=document.getElementById(checkArr[i]['id']),
+      		title=checkArr[i]['title'],
+      		rules=checkArr[i]['rules'];
+      	(function(title,rules){
+      		item.onblur=function(){
+      			var val=this.value,
+      				res=check(val,title,rules);
+      			if(res.error){
+      				validateTip.innerHTML=res.title+res.msg;
+      			}else{
+      				validateTip.innerHTML='';
+      			}
+      		}
+      	})(title,rules);
+      }
+    </script>
+  </body>
+</html>

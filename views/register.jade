@@ -1,0 +1,57 @@
+extends ./inc/layout.jade
+block header
+	title 注册
+	link(rel="stylesheet",href="css/style.css")
+block content
+	.userPage-banner
+		.container
+			.userPageForm.g-fr.registerForm
+				h2.userPageForm-title 
+					span.g-fr 已经注册<a href="">在此登陆></a>
+					|手机注册
+				form(autocomplete="off")
+					.userPageForm-ipt
+						input(type="text",placeholder="请输入手机号码",autocomplete="off")
+					.userPageForm-ipt
+						input(type="text",placeholder="密码为6-20位字母，数字和符号组合",autocomplete="off")
+					.userPageForm-ipt
+						input(type="text",placeholder="请再次输入上面的密码",autocomplete="off")
+					.userPageForm-ipt.userPageForm-ipt2
+						span.g-fr#sendMessage 获取短信校验码
+						input(type="text",placeholder="短信验证码",autocomplete="off")
+					.changeRegisterType
+						a(href="") 通过邮箱注册>
+					button.userPageForm-btn 注 册
+					label(for="agreed")
+						input#agreed(type="checkbox")
+						| 我已阅读并同意 <a href="" target="_blank">《易视网用户协议》</a>
+block scripts
+	script(src="http://file.easeeyes.com/js/jquery.min.js")
+	script(src="js/placeholder.js")
+	script.
+		// 倒计时
+		function countDown(box,init,end,step,interval,callback){
+			var timer=setTimeout(function(){
+				countDown(box,init,end,step,interval,callback);
+			},interval);
+			if(init<=end){
+				clearTimeout(timer);
+				callback();
+			}else{
+				init-=step;
+				box.innerHTML=init;
+			}
+		}
+		var sendBtn=document.getElementById('sendMessage'),
+			clicked=false;
+		sendBtn.onclick=function(){
+			if(clicked) return;
+			clicked=true;
+			var that=this;
+			that.innerHTML="<i id='countDown'></i>秒后重新发送";
+			var box=document.getElementById('countDown');
+			countDown(box,120,1,1,1000,function(){
+				clicked=false;
+				that.innerHTML="获取短信校验码";
+			})
+		}
